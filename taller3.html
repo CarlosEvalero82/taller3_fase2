@@ -10,62 +10,57 @@
     <script src="taller3.js" defer></script>
   </head>
   <body class="container mt-5">
-    <h1 class="text-center">Ejercicios de Taller 3</h1>
+    <h1 class="text-center">Ejercicios de Taller</h1>
 
     <!-- Calculadora de IMC -->
     <section class="mt-5">
-      <h2>Calculadora de IMC</h2>
-      <div class="form-group">
-        <label for="peso">Peso (kg):</label>
-        <input type="number" id="peso" class="form-control" required />
-      </div>
-      <div class="form-group">
-        <label for="altura">Altura (m):</label>
-        <input type="number" id="altura" class="form-control" required />
-      </div>
-      <button class="btn btn-primary" onclick="calcularIMC()">Calcular</button>
-      <div class="form-group mt-3">
-        <label for="resultado">IMC:</label>
-        <input type="text" id="resultado" class="form-control" readonly />
-      </div>
+        <h2>Calculadora de IMC</h2>
+        <div class="form-group">
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="altura">Altura (m):</label>
+            <input type="number" id="altura" class="form-control" required>
+        </div>
+        <button class="btn btn-primary" onclick="calcularIMC()">Calcular</button>
+        <div class="form-group mt-3">
+            <label for="resultado">IMC:</label>
+            <input type="text" id="resultado" class="form-control" readonly>
+        </div>
     </section>
 
-   <!-- Conversor de Divisas -->
-   <section class="mt-5">
-    <h2>Conversor de Divisas</h2>
-    <div class="form-group">
-        <label for="dolares">Dólares (USD):</label>
-        <input type="number" id="dolares" class="form-control" oninput="convertirAPesos()" required>
-    </div>
-    <div class="form-group">
-        <label for="pesos">Pesos Colombianos (COP):</label>
-        <input type="number" id="pesos" class="form-control" oninput="convertirADolares()" required>
-    </div>
-</section>
+    <!-- Conversor de Divisas -->
+    <section class="mt-5">
+        <h2>Conversor de Divisas</h2>
+        <div class="form-group">
+            <label for="dolares">Dólares (USD):</label>
+            <input type="number" id="dolares" class="form-control" oninput="convertirAPesos()" required>
+        </div>
+        <div class="form-group">
+            <label for="pesos">Pesos Colombianos (COP):</label>
+            <input type="number" id="pesos" class="form-control" oninput="convertirADolares()" required>
+        </div>
+    </section>
 
     <!-- Aplicación de Notas -->
     <section class="mt-5">
-      <h2>Aplicación de Notas</h2>
-      <div class="form-group">
-        <input
-          type="text"
-          id="titulo"
-          class="form-control"
-          placeholder="Título"
-        />
-      </div>
-      <div class="form-group">
-        <textarea
-          id="texto"
-          class="form-control"
-          placeholder="Texto"
-        ></textarea>
-      </div>
-      <button class="btn btn-primary" onclick="guardarNota()">Guardar</button>
-      <button class="btn btn-secondary" onclick="limpiarCampos()">
-        Limpiar
-      </button>
-      <div id="contenedor" class="mt-5"></div>
+        <h2>Aplicación de Notas</h2>
+        <div class="form-group">
+            <input type="text" id="titulo" class="form-control" placeholder="Título">
+        </div>
+        <div class="form-group">
+            <textarea id="texto" class="form-control" placeholder="Texto"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="guardarNota()">Guardar</button>
+        <button class="btn btn-secondary" onclick="limpiarCampos()">Limpiar</button>
+        <div class="form-group mt-3">
+            <input type="checkbox" id="filtroRealizadas" onclick="aplicarFiltros()"> Mostrar solo realizadas
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" id="filtroTexto" class="form-control" placeholder="Filtrar por texto" oninput="aplicarFiltros()">
+        </div>
+        <div id="contenedor" class="mt-5 d-flex flex-wrap"></div>
     </section>
-  </body>
+</body>
 </html>

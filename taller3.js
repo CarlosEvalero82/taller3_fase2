@@ -7,7 +7,6 @@ function calcularIMC() {
 }
 
 // Funciones para Conversor de Divisas
-
 const tasaDeCambio = 4000; // 1 dólar = 4000 pesos colombianos
 
 function convertirADolares() {
@@ -48,19 +47,44 @@ function marcarRealizada(id) {
     pintarNotas();
 }
 
-function pintarNotas() {
+function filtrarPorRealizadas(notas) {
+    const filtroRealizadas = document.getElementById('filtroRealizadas').checked;
+    if (filtroRealizadas) {
+        return notas.filter(nota => nota.realizada);
+    }
+    return notas;
+}
+
+function filtrarPorTexto(notas) {
+    const filtroTexto = document.getElementById('filtroTexto').value.toLowerCase();
+    if (filtroTexto) {
+        return notas.filter(nota => 
+            nota.titulo.toLowerCase().includes(filtroTexto) || 
+            nota.texto.toLowerCase().includes(filtroTexto)
+        );
+    }
+    return notas;
+}
+
+function aplicarFiltros() {
+    let notasFiltradas = filtrarPorRealizadas(notas);
+    notasFiltradas = filtrarPorTexto(notasFiltradas);
+    pintarNotas(notasFiltradas);
+}
+
+function pintarNotas(filtradasNotas = notas) {
     const contenedor = document.getElementById('contenedor');
     contenedor.innerHTML = '';
-    if (notas.length === 0) {
+    if (filtradasNotas.length === 0) {
         contenedor.innerHTML = 'NO HAY NOTAS PARA MOSTRAR';
         return;
     }
-    notas.forEach(nota => {
+    filtradasNotas.forEach(nota => {
         const divNota = document.createElement('div');
         divNota.innerHTML = `
             <h3>${nota.titulo}</h3>
             <p>${nota.texto}</p>
-            <button onclick="borrarNota(${nota.id})" class="btn btn-danger">Borrar Nota</button>
+            <button onclick="borrarNota(${nota.id})" class="btn btn-danger btn-sm">Borrar Nota</button>
             <input type="checkbox" onclick="marcarRealizada(${nota.id})" ${nota.realizada ? 'checked' : ''}>
         `;
         contenedor.appendChild(divNota);
